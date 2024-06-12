@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TakeNotes.Views.NoteView"
+             Title="NoteView">
+    <ScrollView>
+        <VerticalStackLayout>
+            <CollectionView ItemsSource="{Binding Notes}">
+                <CollectionView.Header>
+                    <Label FontSize="Large" Text="Tarefas"/>
+                </CollectionView.Header>
+                <CollectionView.EmptyView>
+                    <Label Text="Faltam dados!"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ScrollView>
+                            <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                                <Entry Text="{Binding Title}"/>
+                                <HorizontalStackLayout VerticalOptions="Center">
+                                    <Entry Text="{Binding Id}"/>
+                                    <CheckBox IsChecked="{Binding Completed}"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                                    <Button Text="Salvar" Command="{Binding SaveItemCommand}" HorizontalOptions="Start"/>
+                                    <Button Text="Deletar" Command="{Binding DeleteItemCommand}" HorizontalOptions="Start"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </ScrollView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label Text="Crie sua primeira nota!"/>
+            <Entry Placeholder="Titulo" Text="{Binding Title}"/>
+            <HorizontalStackLayout VerticalOptions="Center">
+                <Entry Text="{Binding Id}"/>
+                <CheckBox IsChecked="{Binding Completed}"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <Button Text="Salvar" Command="{Binding SaveItemCommand}" HorizontalOptions="Start"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
